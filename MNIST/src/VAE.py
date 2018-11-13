@@ -202,11 +202,15 @@ _x_decoded_relu = decoder_deconv_3_upsamp(_deconv_2_decoded)
 _x_decoded_mean_squash = decoder_mean_squash(_x_decoded_relu)
 generator = Model(decoder_input, _x_decoded_mean_squash)
 
+models_directory = '../models/%d/%s/' % (TOTAL_IMAGES, label)
+
+if not os.path.exists(models_directory):
+  os.makedirs(models_directory)
 
 # save all 3 models for future use - especially generator
-vae.save('../models/%d/%s/mnist_ld_%d_conv_%d_id_%d_e_%d_vae.h5' % (TOTAL_IMAGES, label, latent_dim, num_conv, intermediate_dim, epochs))
-encoder.save('../models/%d/%s/mnist_ld_%d_conv_%d_id_%d_e_%d_encoder.h5' % (TOTAL_IMAGES, label, latent_dim, num_conv, intermediate_dim, epochs))
-generator.save('../models/%d/%s/mnist_ld_%d_conv_%d_id_%d_e_%d_generator.h5' % (TOTAL_IMAGES, label, latent_dim, num_conv, intermediate_dim, epochs))
+vae.save_weights('%smnist_ld_%d_conv_%d_id_%d_e_%d_vae.h5' % (models_directory, latent_dim, num_conv, intermediate_dim, epochs))
+encoder.save_weights('%smnist_ld_%d_conv_%d_id_%d_e_%d_encoder.h5' % (models_directory, latent_dim, num_conv, intermediate_dim, epochs))
+generator.save_weights('%smnist_ld_%d_conv_%d_id_%d_e_%d_generator.h5' % (models_directory, latent_dim, num_conv, intermediate_dim, epochs))
 
 n = 3
 img_size = 28
