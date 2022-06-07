@@ -1,2 +1,2 @@
 # DataAugmentation_VAE
-Data Augmentation via Variational Autoencoders
+Code implementation of the paper [Data Augmentation via Variational Autoencoders](https://www.researchgate.net/publication/331474083_Data_Augmentation_via_Variational_Auto-Encoders_23rd_Iberoamerican_Congress_CIARP_2018_Madrid_Spain_November_19-22_2018_Proceedings) on the CIARP 2018 congress
